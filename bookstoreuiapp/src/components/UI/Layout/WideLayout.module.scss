@@ -1,0 +1,26 @@
+.account {
+    height: 100vh;
+    max-height: 100vh;
+}
+
+.img-account {
+    object-fit: cover;
+    width: 100%;
+    filter:grayscale(1);
+}
+
+.nav-tabs {
+    border: 0;
+    flex-wrap: nowrap;
+
+    .nav-item {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/*@media (min-device-width: 800px) and (orientation: landscape) { 
+    .img-account {
+        max-height: 100%;
+    }
+}*/

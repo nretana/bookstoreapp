@@ -1,0 +1,22 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 2000;
+}
+
+.overlay-window {
+    width: 100vw;
+    height: 100vh;
+}
+
+[data-bs-theme=dark] {
+    .overlay {
+        background-color: rgba(52, 58, 64, 0.5);
+    }
+}

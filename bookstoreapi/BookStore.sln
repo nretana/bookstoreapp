@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore.API", "BookStoreAPI\BookStore.API.csproj", "{BAEBB2DD-474A-4808-AD31-64543ED29955}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore.EmailService", "BookStore.EmailService\BookStore.EmailService.csproj", "{203AC421-AAE6-40FD-BFBB-C953DD394D55}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F390E2B7-815F-4076-92DB-93332C9F2D5F}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		azure-pipelines.yml = azure-pipelines.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAEBB2DD-474A-4808-AD31-64543ED29955}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAEBB2DD-474A-4808-AD31-64543ED29955}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAEBB2DD-474A-4808-AD31-64543ED29955}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAEBB2DD-474A-4808-AD31-64543ED29955}.Release|Any CPU.Build.0 = Release|Any CPU
+		{203AC421-AAE6-40FD-BFBB-C953DD394D55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{203AC421-AAE6-40FD-BFBB-C953DD394D55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{203AC421-AAE6-40FD-BFBB-C953DD394D55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{203AC421-AAE6-40FD-BFBB-C953DD394D55}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B058D680-7BA2-4E56-A03F-99F87EB6784C}
+	EndGlobalSection
+EndGlobal

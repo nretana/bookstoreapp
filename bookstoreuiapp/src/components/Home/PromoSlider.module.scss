@@ -1,0 +1,78 @@
+.promo-slider-section {
+    height: 100vh;
+    min-height: 768px;
+    background-color: #1A1A1A;
+}
+
+.promo-content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.promo-slider-content {
+    width: 100%;
+    flex-wrap: nowrap;
+    position: relative;
+    overflow: hidden;
+    padding: 5rem 0;
+
+    > div[class^='col'] {
+        z-index: 2;
+    }
+
+    &:before {
+        content: ' ';
+        background: url('../../assets/imgs/frame-top-right-img.svg') no-repeat 0 100%;
+        width: 615px;
+        height: 402px;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    &:after {
+        content: ' ';
+        background: url('../../assets/imgs/frame-bottom-left-img.svg') no-repeat 0 100%;
+        width: 615px;
+        height: 402px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+}
+
+.slider-button-prev, .slider-button-next  {
+    margin: 0 auto;
+    display: block;
+    fill: #ffffff;
+    z-index: 2;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 2rem;
+    padding: 0;
+}
+
+.slider-item {
+    height: 100%;
+    max-height: 600px;
+    display: none;
+    width: auto;
+
+    &.active {
+        z-index: 1;
+        display: block;
+        animation-name: myFadeIn;
+        animation-duration: 3s;
+    }
+}
+
+@keyframes myFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+}

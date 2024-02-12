@@ -1,0 +1,63 @@
+trigger:
+ - master
+
+pool:
+ vmImage: "windows-latest"
+
+variables:
+ buildConfiguration: 'Release'
+ solution: '**/*.sln'
+
+stages:
+ - stage: Build
+   jobs:
+    - job: Build
+      steps:
+       - task: UseDotNet@2
+         displayName: 'Install Dotnet 7'
+         inputs:
+           version: '7.x'
+           includePreviewVersions: false
+
+       - task: DotNetCoreCLI@2
+         displayName: 'Restore dependencies in the web app'
+         inputs:
+           command: 'restore'
+           projects: '$(solution)'
+           feedsToUse: 'select'
+
+       - task: DotNetCoreCLI@2
+         displayName: 'Build web app'
+         inputs:
+           command: 'build'
+           projects: '$(solution)'
+           arguments: '--configuration $(buildConfiguration)'
+       
+       - task: DotNetCoreCLI@2
+         displayName: 'Run dotnet publish build $(buildConfiguration)'
+         inputs:
+           command: 'publish'
+           publishWebProjects: true
+           arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+       
+       - task: PublishPipelineArtifact@1
+         inputs:
+           targetPath: '$(Build.ArtifactStagingDirectory)'
+           artifact: 'bookstoreapiartifact'
+           publishLocation: 'pipeline'
+
+ - stage: Deploy
+   jobs:
+     - job: Deploy
+       steps:
+         - download: current
+           artifact: 'bookstoreapiartifact'
+         - task: AzureWebApp@1
+           displayName: 'Deploy BookStoreAPI in Azure Dev Environment'
+           inputs:
+             azureSubscription: 'MicrosoftAzurePortal'
+             appType: 'webApp'
+             appName: 'bookstoreapidev'
+             package: '$(Pipeline.Workspace)/**/*.zip'
+             deploymentMethod: 'auto'
+         

@@ -1,0 +1,55 @@
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+ - stage: Build
+   jobs: 
+    - job: Build
+      steps:
+      - task: NodeTool@0
+        displayName: 'Install Node JS tool'
+        inputs:
+          versionSource: 'spec'
+          versionSpec: '16.x'
+      - script: |
+          npm install
+          npm run build:prod
+      - task: ArchiveFiles@2
+        displayName: 'Create a Zip File Based on Build Files'
+        inputs:
+          rootFolderOrFile: $(System.DefaultWorkingDirectory)/build
+          includeRootFolder: true
+          archiveType: 'zip'
+          archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+          replaceExistingArchive: true
+      - task: PublishPipelineArtifact@1
+        displayName: 'Save Artifact to Azure Pipeline'
+        inputs:
+          targetPath: '$(Build.ArtifactStagingDirectory)'
+          artifact: 'bookstoreuiartifact'
+          publishLocation: 'pipeline'
+
+ - stage: Deploy
+   jobs:
+     - job: Deploy
+       steps:
+         - download: current
+           artifact: 'bookstoreuiartifact'
+         - task: AzureWebApp@1
+           displayName: 'Deploy BookStore UI in Azure Dev Environment'
+           inputs:
+             azureSubscription: 'MicrosoftAzurePortal'
+             appType: 'webApp'
+             appName: 'bookstoreuiapp'
+             package: '$(Pipeline.Workspace)/**/*.zip'
+             deploymentMethod: 'auto'
+             startUpCommand: 'pm2 serve /home/site/wwwroot/build --spa --no-daemon'
+
+
+
+
+        
+
