@@ -13,17 +13,11 @@ Small book app with user management and book search system.
 
 <br />
 <div align="center">
-  <img src="mkdimgs/homepage.png" alt="Landing Page" width="830" height="534">
-  <br />
-  <br />
-  <img src="mkdimgs/signin.png" alt="Sigin Form" width="830" height="506">
-  <br />
-  <br />
-  <img src="mkdimgs/forgotpassword.png" alt="Forgot Password Form" width="830" height="353">
-  <br />
-  <br />
-  <img src="mkdimgs/booksearch.png" alt="Book Search" width="830" height="534">
-  <br />
+
+
+https://github.com/nretana/bookstoreapp/assets/94148180/03898a0e-88cf-431d-a9e1-f4c1f0bb8435
+
+
 </div>
 
 ## Tech Stack
