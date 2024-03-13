@@ -5,7 +5,7 @@ Small book app with user management and book search system.
 ## Features
 * Book search by authors, genres, formats.
 * Pagination and sorting features are supported for the book search.
-* Authentication and Authorization.
+* Token authentication.
 * Light and dark theme support.
 
 
